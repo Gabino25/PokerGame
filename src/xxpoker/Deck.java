@@ -94,6 +94,16 @@ public class Deck{
 		if(!"Sin Ganador".equals(str)) {
 			return str;
 		}
+		
+		b1 = hand1.getFull();
+		b2 = hand2.getFull(); 
+		System.out.println("h1full:"+b1);
+	    System.out.println("h2full:"+b2);
+	    str = compareResults(b1,b2); 
+		if(!"Sin Ganador".equals(str)) {
+			return str;
+		}
+		
 	
 		int h1maxvalue = hand1.getMaxValue(); 
 	    int h2maxvalue = hand2.getMaxValue(); 

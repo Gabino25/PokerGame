@@ -10,6 +10,7 @@ public class Hand {
 	private boolean escaleraReal; 
 	private boolean escaleraColor; 
 	private boolean poker; 
+	private boolean full; 
 	private int maxValue; 
 
 	public List<Card> getCards() {
@@ -183,6 +184,59 @@ public class Hand {
 
 	public void setPoker(boolean poker) {
 		this.poker = poker;
+	}
+
+	public boolean getFull() {
+		int idx = 0; 
+		Card[] tmp = new Card[cards.size()];
+		Card[] tmp2= {};
+		for(Card i:cards) {
+			tmp[idx++]= i; 
+		}
+		
+		String strValueFinded = null; 
+		
+		for(int i=0;i<values.length;i++) {
+			int cnt = countCards(values[i],tmp); 
+			if(3==cnt) {
+				remove(3,values[i],tmp); 
+				strValueFinded = values[i]; 
+			}
+		}
+		
+		if(null==strValueFinded) {
+			full = false; 
+			return full; 
+		}
+		
+		for(int i=0;i<values.length;i++) {
+	     if(!strValueFinded.equals(values[i])) {
+			 int cnt = countCards(values[i],tmp);
+			 if(2==cnt) {
+				 full = true; 
+				 return true; 
+			 }
+		 }
+		}
+		
+		
+		return full;
+	}
+
+	private void remove(int size,String string, Card[] tmp) {
+		Card[] tmp2 = new Card[5-size]; 
+		int idx = 0; 
+		for(int i=0;i<tmp.length;i++) {
+			if(!string.equals(tmp[i].getValue())) {
+				tmp2[idx++] = tmp[i]; 
+			}
+		}
+		tmp = tmp2;
+		
+	}
+
+	public void setFull(boolean full) {
+		this.full = full;
 	}
 
 
