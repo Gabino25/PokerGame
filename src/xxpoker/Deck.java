@@ -64,7 +64,29 @@ public class Deck{
 
 	public String whoWins(Hand hand1, Hand hand2) {
 		String str = "Sin Ganador";
-	    int h1maxvalue = hand1.getMaxValue(); 
+		boolean h1escaleraReal = hand1.getEscaleraReal(); 
+		boolean h2escaleraReal = hand2.getEscaleraReal(); 
+		if(h1escaleraReal) {
+			if(h2escaleraReal) {
+				str = "Sin Ganador";
+			}else {
+				str = "Player 1";
+			}
+		}else {
+			if(h2escaleraReal) {
+				str = "Player 2";
+			}else {
+				str = "Sin Ganador";
+			}
+		}
+		
+		if(!"Sin Ganador".equals(str)) {
+			return str;
+		}
+		
+		System.out.println("h1escaleraReal:"+h1escaleraReal);
+	    System.out.println("h2escaleraReal:"+h2escaleraReal);
+		int h1maxvalue = hand1.getMaxValue(); 
 	    int h2maxvalue = hand2.getMaxValue(); 
 		System.out.println("h1maxvalue"+h1maxvalue);
 	    System.out.println("h2maxvalue"+h2maxvalue);

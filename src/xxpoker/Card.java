@@ -1,6 +1,6 @@
 package xxpoker;
 
-public class Card {
+public class Card implements Comparable<Card>{
 	 private String figure;
 	 private String value;
 	 private int valueInt; 
@@ -52,6 +52,12 @@ public class Card {
 
 	public void setValueInt(int valueInt) {
 		this.valueInt = valueInt;
+	}
+
+	@Override
+	public int compareTo(Card o) {
+		int compQty = o.getValueInt();
+		return (this.getValueInt()-compQty);
 	}
 	
 }

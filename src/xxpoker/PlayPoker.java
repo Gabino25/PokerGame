@@ -5,7 +5,7 @@ import java.util.List;
 public class PlayPoker {
 	
 
-	private static final String sep ="*************************************";
+	static final String sep ="*************************************";
 	
 	public static void main(String[] args) {
 		System.out.println("Comienza PlayPoker");
@@ -26,6 +26,7 @@ public class PlayPoker {
 		System.out.println(sep);
 		System.out.println("Finaliza PlayPoker");
 	}
+	
 	
 }
 
