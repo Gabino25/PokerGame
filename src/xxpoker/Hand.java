@@ -4,10 +4,12 @@ import java.util.Collections;
 import java.util.List;
 
 public class Hand {
-	private final String[] figures = {"Clubs","Diamonds","Hearts","Spades"};
+	private final String[] figures = Utils.figures; 
+	private final String[] values = {"Ace","2","3","4","5","6","7","8","9","10","Jack","Queen","King"};
 	private List<Card> cards;
 	private boolean escaleraReal; 
 	private boolean escaleraColor; 
+	private boolean poker; 
 	private int maxValue; 
 
 	public List<Card> getCards() {
@@ -86,7 +88,7 @@ public class Hand {
 	public boolean Contains(String pValue,Card[] tmp1,Card[] tmp2){
 		boolean retval = false; 
 		for(int i=0;i<tmp1.length;i++) {
-			if(pValue.equals(tmp1[i].getValue())) {
+			if(pValue.equals(tmp1[i].toString())) {
 				retval =  true;
 				break;
 			}
@@ -95,7 +97,7 @@ public class Hand {
 			tmp2 = new Card[tmp1.length-1];
 			int idx2 = 0;
 			for(int i=0;i<tmp1.length;i++) {
-				if(!pValue.equals(tmp1[i].getValue())) {
+				if(!pValue.equals(tmp1[i].toString())) {
 					tmp2[idx2++] = tmp1[i]; 
 				}
 			}
@@ -148,6 +150,39 @@ public class Hand {
 
 	public void setEscaleraColor(boolean escaleraColor) {
 		this.escaleraColor = escaleraColor;
+	}
+
+	public boolean getPoker() {
+		int idx = 0; 
+		Card[] tmp = new Card[cards.size()];
+		Card[] tmp2= {};
+		for(Card i:cards) {
+			tmp[idx++]= i; 
+		}
+		
+		for(int i=0;i<values.length;i++) {
+			int cnt = countCards(values[i],tmp); 
+			if(4==cnt) {
+				poker = true;
+				return poker; 
+			}
+		}
+		poker = false; 
+		return poker;
+	}
+
+	private int countCards(String string, Card[] tmp) {
+		int retval = 0; 
+		for(int i=0;i<tmp.length;i++) {
+			if(string.equals(tmp[i].getValue())) {
+				retval++; 
+			}
+		}
+		return retval;
+	}
+
+	public void setPoker(boolean poker) {
+		this.poker = poker;
 	}
 
 

@@ -6,8 +6,8 @@ import java.util.Random;
 
 public class Deck{
 
-	private final String[] figures = {"Clubs","Diamonds","Hearts","Spades"};
-	private final String[] values = {"Ace","2","3","4","5","6","7","8","9","10","Jack","Queen","King"};
+	private final String[] figures = Utils.figures;
+	private final String[] values = {Utils.ACE,"2","3","4","5","6","7","8","9","10",Utils.JACK,Utils.QUEEN,Utils.KING};
 	private static Deck obj; 
 	private Deck() {
 		cards = new ArrayList<Card>(); 
@@ -64,25 +64,37 @@ public class Deck{
 
 	public String whoWins(Hand hand1, Hand hand2) {
 		String str = "Sin Ganador";
-		boolean h1escaleraReal = hand1.getEscaleraReal(); 
-		boolean h2escaleraReal = hand2.getEscaleraReal(); 
-		System.out.println("h1escaleraReal:"+h1escaleraReal);
-	    System.out.println("h2escaleraReal:"+h2escaleraReal);
-		str = compareResults(h1escaleraReal,h2escaleraReal); 
+		boolean b1 = false; 
+		boolean b2 = false; 
+		b1 = hand1.getEscaleraReal(); 
+		b2 = hand2.getEscaleraReal(); 
+		System.out.println("h1escaleraReal:"+b1);
+	    System.out.println("h2escaleraReal:"+b2);
+		str = compareResults(b1,b2); 
 		if(!"Sin Ganador".equals(str)) {
 			return str;
 		}
 		
 		
-		boolean h1escaleracolor = hand1.getEscaleraColor(); 
-		boolean h2escaleracolor = hand2.getEscaleraColor(); 
-		System.out.println("h1escaleracolor:"+h1escaleracolor);
-	    System.out.println("h2escaleracolor:"+h2escaleracolor);
-	    str = compareResults(h1escaleracolor,h2escaleracolor); 
+		b1 = hand1.getEscaleraColor(); 
+		b2 = hand2.getEscaleraColor(); 
+		System.out.println("h1escaleracolor:"+b1);
+	    System.out.println("h2escaleracolor:"+b2);
+	    str = compareResults(b1,b2); 
 		if(!"Sin Ganador".equals(str)) {
 			return str;
 		}
 		
+		
+		b1 = hand1.getPoker(); 
+		b2 = hand2.getPoker(); 
+		System.out.println("h1poker:"+b1);
+	    System.out.println("h2poker:"+b2);
+	    str = compareResults(b1,b2); 
+		if(!"Sin Ganador".equals(str)) {
+			return str;
+		}
+	
 		int h1maxvalue = hand1.getMaxValue(); 
 	    int h2maxvalue = hand2.getMaxValue(); 
 		System.out.println("h1maxvalue"+h1maxvalue);
