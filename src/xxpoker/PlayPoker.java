@@ -20,6 +20,10 @@ public class PlayPoker {
 		System.out.println(hand2);
 		System.out.println(sep);
 		System.out.println(deck);
+		String strWhoWins = deck.whoWins(hand1,hand2);
+		System.out.println(sep);
+		System.out.println("strWhoWins:"+strWhoWins);
+		System.out.println(sep);
 		System.out.println("Finaliza PlayPoker");
 	}
 	

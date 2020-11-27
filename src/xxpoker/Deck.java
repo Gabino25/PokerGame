@@ -61,5 +61,15 @@ public class Deck{
 		retval.setCards(listCards);
 		return retval;
 	}
+
+	public String whoWins(Hand hand1, Hand hand2) {
+		String str = "Sin Ganador";
+	    int h1maxvalue = hand1.getMaxValue(); 
+	    int h2maxvalue = hand2.getMaxValue(); 
+		System.out.println("h1maxvalue"+h1maxvalue);
+	    System.out.println("h2maxvalue"+h2maxvalue);
+	    str = h1maxvalue>h2maxvalue?"Player 1":h1maxvalue==h2maxvalue?"Sin Ganador":"Player 2";
+	    return str;
+	}
 	
 }
