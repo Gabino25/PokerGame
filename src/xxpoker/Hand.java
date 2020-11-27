@@ -7,6 +7,7 @@ public class Hand {
 	private final String[] figures = {"Clubs","Diamonds","Hearts","Spades"};
 	private List<Card> cards;
 	private boolean escaleraReal; 
+	private boolean escaleraColor; 
 	private int maxValue; 
 
 	public List<Card> getCards() {
@@ -62,8 +63,6 @@ public class Hand {
 		for(int i=0;i<figures.length;i++) {
 			boolean getval = Contains("10"+figures[i],tmp,tmp2);
 			if(getval) {
-				getval = Contains("Jack"+figures[i],tmp,tmp2);
-				if(getval) {
 					getval = Contains("Jack"+figures[i],tmp,tmp2);
 					if(getval) {
 						getval = Contains("Queen"+figures[i],tmp,tmp2);
@@ -78,7 +77,6 @@ public class Hand {
 							}
 						}
 					}
-				}
 			}
 		}
 		
@@ -109,5 +107,49 @@ public class Hand {
 	public void setEscaleraReal(boolean escaleraReal) {
 		this.escaleraReal = escaleraReal;
 	}
+
+	public boolean getEscaleraColor() {
+		int idx = 0; 
+		Card[] tmp = new Card[cards.size()];
+		Card[] tmp2= {};
+		for(Card i:cards) {
+			tmp[idx++]= i; 
+		}
+		
+		for(int i=0;i<figures.length;i++) {
+			boolean getval = Contains("Ace"+figures[i],tmp,tmp2);
+			if(getval) {
+				return false;
+			}
+		}
+		
+		for(int i=1;i<tmp.length;i++) {
+			boolean getval = isConsecutive(tmp[i-1],tmp[i]); 
+			if(!getval) {
+				escaleraColor = false;
+				return escaleraColor; 
+			}
+		}
+		
+		escaleraColor = true; 
+		
+		
+		return escaleraColor;
+	}
+
+	private boolean isConsecutive(Card card1, Card card2) {
+		if(1==card2.compareTo(card1)) {
+			return true;
+		}else {
+			return false;	
+		}
+		
+	}
+
+	public void setEscaleraColor(boolean escaleraColor) {
+		this.escaleraColor = escaleraColor;
+	}
+
+
 		
 }

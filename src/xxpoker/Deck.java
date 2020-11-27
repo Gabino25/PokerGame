@@ -66,32 +66,47 @@ public class Deck{
 		String str = "Sin Ganador";
 		boolean h1escaleraReal = hand1.getEscaleraReal(); 
 		boolean h2escaleraReal = hand2.getEscaleraReal(); 
-		if(h1escaleraReal) {
-			if(h2escaleraReal) {
-				str = "Sin Ganador";
-			}else {
-				str = "Player 1";
-			}
-		}else {
-			if(h2escaleraReal) {
-				str = "Player 2";
-			}else {
-				str = "Sin Ganador";
-			}
-		}
-		
+		System.out.println("h1escaleraReal:"+h1escaleraReal);
+	    System.out.println("h2escaleraReal:"+h2escaleraReal);
+		str = compareResults(h1escaleraReal,h2escaleraReal); 
 		if(!"Sin Ganador".equals(str)) {
 			return str;
 		}
 		
-		System.out.println("h1escaleraReal:"+h1escaleraReal);
-	    System.out.println("h2escaleraReal:"+h2escaleraReal);
+		
+		boolean h1escaleracolor = hand1.getEscaleraColor(); 
+		boolean h2escaleracolor = hand2.getEscaleraColor(); 
+		System.out.println("h1escaleracolor:"+h1escaleracolor);
+	    System.out.println("h2escaleracolor:"+h2escaleracolor);
+	    str = compareResults(h1escaleracolor,h2escaleracolor); 
+		if(!"Sin Ganador".equals(str)) {
+			return str;
+		}
+		
 		int h1maxvalue = hand1.getMaxValue(); 
 	    int h2maxvalue = hand2.getMaxValue(); 
 		System.out.println("h1maxvalue"+h1maxvalue);
 	    System.out.println("h2maxvalue"+h2maxvalue);
 	    str = h1maxvalue>h2maxvalue?"Player 1":h1maxvalue==h2maxvalue?"Sin Ganador":"Player 2";
 	    return str;
+	}
+	
+	public String compareResults(boolean b1,boolean b2) {
+		String retval = "Sin Ganador";
+		if(b1) {
+			if(b2) {
+				retval = "Sin Ganador";
+			}else {
+				retval = "Player 1";
+			}
+		}else {
+			if(b2) {
+				retval = "Player 2";
+			}else {
+				retval = "Sin Ganador";
+			}
+		}
+		return retval; 
 	}
 	
 }
