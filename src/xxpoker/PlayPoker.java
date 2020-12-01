@@ -14,13 +14,14 @@ public class PlayPoker {
 		System.out.println(deck);
 		System.out.println(sep);
 		
-		/*
-		Hand hand1 = deck.getHand(); 
-		Hand hand2 = deck.getHand();
-		*/
 		
 		Hand hand1 = deck.getHand(); 
-		Hand hand2 = getStraight();
+		Hand hand2 = deck.getHand();
+		
+		/**
+		Hand hand1 = getTreeOfaKind(); 
+		Hand hand2 = deck.getHand();
+		**/
 		
 		System.out.println(hand1);
 		System.out.println(sep);
@@ -91,6 +92,18 @@ public class PlayPoker {
 		cards.add(new Card(Utils.DIAMONDS,"3")); 
 		cards.add(new Card(Utils.SPADES,"4")); 
 		cards.add(new Card(Utils.DIAMONDS,"5")); 
+		Hand hand = new Hand();
+		hand.setCards(cards);
+		return hand;
+	}
+	
+	private static Hand getTreeOfaKind() {
+		List<Card> cards = new ArrayList<Card>(); 
+		cards.add(new Card(Utils.DIAMONDS,Utils.ACE)); 
+		cards.add(new Card(Utils.CLUBS,"2")); 
+		cards.add(new Card(Utils.DIAMONDS,"2")); 
+		cards.add(new Card(Utils.SPADES,"4")); 
+		cards.add(new Card(Utils.DIAMONDS,"2")); 
 		Hand hand = new Hand();
 		hand.setCards(cards);
 		return hand;

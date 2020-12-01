@@ -122,7 +122,33 @@ public class Deck{
 			return str;
 		}
 		
+		b1 = hand1.getTreeOfaKind();
+		b2 = hand2.getTreeOfaKind(); 
+		System.out.println("h1TreeOfaKind:"+b1);
+	    System.out.println("h2TreeOfaKind:"+b2);
+	    str = compareResults(b1,b2); 
+		if(!"Sin Ganador".equals(str)) {
+			return str;
+		}
+		
+		b1 = hand1.getTwoPair();
+		b2 = hand2.getTwoPair(); 
+		System.out.println("h1TwoPair:"+b1);
+	    System.out.println("h2TwoPair:"+b2);
+	    str = compareResults(b1,b2); 
+		if(!"Sin Ganador".equals(str)) {
+			return str;
+		}
 	
+		b1 = hand1.getOnePair();
+		b2 = hand2.getOnePair(); 
+		System.out.println("h1OnePair:"+b1);
+	    System.out.println("h2OnePair:"+b2);
+	    str = compareResults(b1,b2); 
+		if(!"Sin Ganador".equals(str)) {
+			return str;
+		}
+		
 		int h1maxvalue = hand1.getMaxValue(); 
 	    int h2maxvalue = hand2.getMaxValue(); 
 		System.out.println("h1maxvalue"+h1maxvalue);

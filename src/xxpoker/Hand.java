@@ -11,9 +11,12 @@ public class Hand {
 	private boolean escaleraColor; 
 	private boolean poker; 
 	private boolean full; 
-	private boolean escalera; 
+	private boolean escalera;
+	private boolean treeOfaKind; 
+	private boolean onePair; 
+	private boolean twoPair; 
 	private int maxValue; 
-
+	
 	public List<Card> getCards() {
 		return cards;
 	}
@@ -281,6 +284,90 @@ public class Hand {
 		return retval;
 	}
 
+	public boolean getTreeOfaKind() {
+		int idx = 0; 
+		Card[] tmp = new Card[cards.size()];
+		Card[] tmp2= {};
+		for(Card i:cards) {
+			tmp[idx++]= i; 
+		}
+		
+		for(int i=0;i<values.length;i++) {
+			int cnt = countCards(values[i],tmp); 
+			if(3==cnt) {
+				treeOfaKind = true;
+				return treeOfaKind; 
+			}
+		}
+		treeOfaKind = false; 
+		return treeOfaKind;
+	}
+
+	public boolean getOnePair() {
+		int idx = 0; 
+		Card[] tmp = new Card[cards.size()];
+		Card[] tmp2= {};
+		for(Card i:cards) {
+			tmp[idx++]= i; 
+		}
+		
+		for(int i=0;i<values.length;i++) {
+			int cnt = countCards(values[i],tmp); 
+			if(2==cnt) {
+				onePair = true;
+				return onePair; 
+			}
+		}
+		onePair = false; 
+		return onePair;
+	}
+
+	public boolean getTwoPair() {
+		boolean localOnePair = false; 
+		int idx = 0; 
+		Card[] tmp = new Card[cards.size()];
+		Card[] tmp2= {};
+		for(Card i:cards) {
+			tmp[idx++]= i; 
+		}
+		for(int i=0;i<values.length;i++) {
+			int cnt = countCards(values[i],tmp,tmp2); 
+			if(2==cnt) {
+				localOnePair = true; 
+				break; 
+			}
+		}
+		
+		if(localOnePair) {
+			for(int i=0;i<values.length;i++) {
+				int cnt = countCards(values[i],tmp2); 
+				if(2==cnt) {
+					twoPair = true; 
+					return twoPair; 
+				}
+			}
+		}
+		
+		twoPair = false; 
+		return twoPair;
+	}
+
+	private int countCards(String string, Card[] tmp, Card[] tmp2) {
+		int retval = 0; 
+		int idxtmp2 = 0; 
+		for(int i=0;i<tmp.length;i++) {
+			if(string.equals(tmp[i].getValue())) {
+				retval++; 
+			}
+		}
+		tmp2 = new Card[tmp.length-retval];
+		for(int i=0;i<tmp.length;i++) {
+			if(!string.equals(tmp[i].getValue())) {
+				tmp2[idxtmp2++] = tmp[i];
+			}
+		}
+		return retval;
+	}
 
 		
 }
