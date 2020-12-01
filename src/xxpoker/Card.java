@@ -57,7 +57,11 @@ public class Card implements Comparable<Card>{
 	@Override
 	public int compareTo(Card o) {
 		int compQty = o.getValueInt();
+		if(this.getValueInt()==2&&o.getValueInt()==14) {
+			return 1;
+		}else {
 		return (this.getValueInt()-compQty);
+		}
 	}
 	
 }

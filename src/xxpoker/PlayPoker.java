@@ -19,8 +19,8 @@ public class PlayPoker {
 		Hand hand2 = deck.getHand();
 		*/
 		
-		Hand hand1 = getFull(); 
-		Hand hand2 = deck.getHand();
+		Hand hand1 = deck.getHand(); 
+		Hand hand2 = getStraight();
 		
 		System.out.println(hand1);
 		System.out.println(sep);
@@ -67,6 +67,30 @@ public class PlayPoker {
 		cards.add(new Card("Hearts","2")); 
 		cards.add(new Card("Clubs","5")); 
 		cards.add(new Card("Diamonds","5")); 
+		Hand hand = new Hand();
+		hand.setCards(cards);
+		return hand;
+	}
+	
+	private static Hand getFlush() {
+		List<Card> cards = new ArrayList<Card>(); 
+		cards.add(new Card(Utils.DIAMONDS,Utils.ACE)); 
+		cards.add(new Card(Utils.DIAMONDS,Utils.KING)); 
+		cards.add(new Card(Utils.DIAMONDS,"3")); 
+		cards.add(new Card(Utils.DIAMONDS,"4")); 
+		cards.add(new Card(Utils.DIAMONDS,"9")); 
+		Hand hand = new Hand();
+		hand.setCards(cards);
+		return hand;
+	}
+	
+	private static Hand getStraight() {
+		List<Card> cards = new ArrayList<Card>(); 
+		cards.add(new Card(Utils.DIAMONDS,Utils.ACE)); 
+		cards.add(new Card(Utils.CLUBS,"2")); 
+		cards.add(new Card(Utils.DIAMONDS,"3")); 
+		cards.add(new Card(Utils.SPADES,"4")); 
+		cards.add(new Card(Utils.DIAMONDS,"5")); 
 		Hand hand = new Hand();
 		hand.setCards(cards);
 		return hand;

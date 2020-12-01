@@ -104,6 +104,24 @@ public class Deck{
 			return str;
 		}
 		
+		b1 = hand1.getStraight();
+		b2 = hand2.getStraight(); 
+		System.out.println("h1Straight:"+b1);
+	    System.out.println("h2Straight:"+b2);
+	    str = compareResults(b1,b2); 
+		if(!"Sin Ganador".equals(str)) {
+			return str;
+		}
+		
+		b1 = hand1.getFlush();
+		b2 = hand2.getFlush(); 
+		System.out.println("h1Flush:"+b1);
+	    System.out.println("h2Flush:"+b2);
+	    str = compareResults(b1,b2); 
+		if(!"Sin Ganador".equals(str)) {
+			return str;
+		}
+		
 	
 		int h1maxvalue = hand1.getMaxValue(); 
 	    int h2maxvalue = hand2.getMaxValue(); 

@@ -2,6 +2,10 @@ package xxpoker;
 
 public class Utils {
    public static final String CLUBS = "Clubs"; 
+   public static final String DIAMONDS = "Diamonds"; 
+   public static final String HEARTS = "Hearts"; 
+   public static final String SPADES = "Spades"; 
+   
    public static final String ACE = "Ace";
    public static final String JACK = "Jack"; 
    public static final String QUEEN = "Queen"; 

@@ -11,6 +11,7 @@ public class Hand {
 	private boolean escaleraColor; 
 	private boolean poker; 
 	private boolean full; 
+	private boolean escalera; 
 	private int maxValue; 
 
 	public List<Card> getCards() {
@@ -237,6 +238,47 @@ public class Hand {
 
 	public void setFull(boolean full) {
 		this.full = full;
+	}
+
+	public boolean getFlush() {
+		boolean retval = false; 
+		int idx = 0; 
+		Card[] tmp = new Card[cards.size()];
+		Card[] tmp2= {};
+		for(Card i:cards) {
+			tmp[idx++]= i; 
+		}
+		
+		for(Card i:cards) {
+		  if(tmp[0].getFigure().equals(i.getFigure())) {
+			  retval = true;
+		  }else {
+			  retval = false;
+			  return retval; 
+		  }
+		}	
+		
+		return retval;
+	}
+
+	public boolean getStraight() {
+		boolean retval = false; 
+		int idx = 0; 
+		Card[] tmp = new Card[cards.size()];
+		Card[] tmp2= {};
+		for(Card i:cards) {
+			tmp[idx++]= i; 
+		}
+		int valida = 0; 
+		for(int i=1;i<tmp.length;i++) {
+			retval = isConsecutive(tmp[i-1],tmp[i]); 
+			if(!retval) {
+				escalera = false;
+				return escalera; 
+			}
+		}
+		escalera = retval; 
+		return retval;
 	}
 
 
