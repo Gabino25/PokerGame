@@ -94,6 +94,106 @@ document.addEventListener('DOMContentLoaded', () => {
             retval.push(decodeFigure);
           }
         }
+        if(decodeValue===14){
+            retval.push(decodeFigure);
+        }
+        return retval;
+    }
+
+    function getDecodeGridArea(){
+        let decodeValue =  this.decodeValueF();
+        let retval = [];
+        if(decodeValue>=2&&decodeValue<=10){
+          switch (decodeValue) {
+              case 2:
+                for(let i=0;i<decodeValue;i++){
+                    if(0===i){
+                        retval.push("A2");
+                    }else if(1===i){
+                        retval.push("C2");
+                    }
+                  }
+                  break;
+                  case 3:
+                    for(let i=0;i<decodeValue;i++){
+                        if(0===i){
+                            retval.push("A2");
+                        }else if(1===i){
+                            retval.push("B2");
+                        }else if(2===i){
+                            retval.push("C2");
+                        }
+                      }
+                      break;    
+                      case 4:
+                        for(let i=0;i<decodeValue;i++){
+                            if(0===i){
+                                retval.push("A1");
+                            }else if(1===i){
+                                retval.push("A3");
+                            }else if(2===i){
+                                retval.push("C1");
+                            }else if(3===i){
+                                retval.push("C3");
+                            }
+                          }
+                          break;  
+                          case 5:
+                            for(let i=0;i<decodeValue;i++){
+                                if(0===i){
+                                    retval.push("A1");
+                                }else if(1===i){
+                                    retval.push("A3");
+                                }else if(2===i){
+                                    retval.push("B2");
+                                }else if(3===i){
+                                    retval.push("C1");
+                                }else if(4===i){
+                                    retval.push("C3");
+                                }
+                              }
+                              break;      
+                              case 6:
+                                for(let i=0;i<decodeValue;i++){
+                                    if(0===i){
+                                        retval.push("A1");
+                                    }else if(1===i){
+                                        retval.push("A3");
+                                    }else if(2===i){
+                                        retval.push("B1");
+                                    }else if(3===i){
+                                        retval.push("B3");
+                                    }else if(4===i){
+                                        retval.push("C1");
+                                    }else if(5===i){
+                                        retval.push("C3");
+                                    }
+                                  }
+                                  break;  
+                                  case 7:
+                                    for(let i=0;i<decodeValue;i++){
+                                        if(0===i){
+                                            retval.push("A1");
+                                        }else if(1===i){
+                                            retval.push("A3");
+                                        }else if(2===i){
+                                            retval.push("B1");
+                                        }else if(3===i){
+                                            retval.push("B3");
+                                        }else if(4===i){
+                                            retval.push("C1");
+                                        }else if(5===i){
+                                            retval.push("C3");
+                                        }else if(6===i){
+                                            retval.push("B2");
+                                        }
+                                      }
+                                      break;                   
+              default:
+                  break;
+          }
+         
+        }
         return retval;
     }
 
@@ -104,6 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
         this.decodeFigureF = getDecodeFigure;
         this.decodeValueF = getDecodeValue;
         this.numDecodeFigureF = getNumDecodeFigure;
+        this.decodeGridArea = getDecodeGridArea;
     }
 
     let deck = [];
@@ -124,12 +225,34 @@ document.addEventListener('DOMContentLoaded', () => {
         let lDiv = document.createElement("div");
         let lCard = deck[i];
         lDiv.style.color = deck[i].color;
+        lDiv.classList.add("card");
         let str =""
         let lnumDecodeFigure = lCard.numDecodeFigureF();
-        for(let i=0;i<lnumDecodeFigure.length;i++){
-            str =str+lnumDecodeFigure[i];
+        let ldecodeGridArea = lCard.decodeGridArea();
+        let lnumDecodeFigureLenght = lnumDecodeFigure.length;
+        if(lnumDecodeFigureLenght>1&&lnumDecodeFigureLenght<=10){
+            let lDiv2 = document.createElement("div");
+            lDiv2.innerHTML = lnumDecodeFigure.length;
+            if(!!lDiv){
+                lDiv.appendChild(lDiv2);
+            }
+            if(lnumDecodeFigureLenght>1&&lnumDecodeFigureLenght<=7){
+                lDiv.classList.add("ThreeByThree");
+            }
         }
-        lDiv.innerHTML = str;
+        for(let i=0;i<lnumDecodeFigure.length;i++){
+            let lDiv2 = document.createElement("div");
+            lDiv2.classList.add("figure");
+            if(!!ldecodeGridArea[i]){
+                lDiv2.style.gridArea = ldecodeGridArea[i];
+            }
+            lDiv2.innerHTML = lnumDecodeFigure[i]; 
+            if(!!lDiv){
+              lDiv.appendChild(lDiv2);
+            }
+            /*str =str+lnumDecodeFigure[i];*/
+        }
+        /*lDiv.innerHTML = str;*/
         if(!!lpokerGame){
             lpokerGame.appendChild(lDiv);
         }

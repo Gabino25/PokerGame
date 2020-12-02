@@ -1,1 +1,26 @@
 @charset "UTF-8";
+.pokerGame{
+    display: grid;
+    grid-template-columns: repeat(13,6%);
+    grid-template-rows: 4;
+    column-gap: 1px;
+    row-gap: 2px;
+    border: 1px solid red;
+}
+
+.card{
+    border: 1px solid blue;
+    /*width:  3.75em;
+    height: 5.00em;*/
+}
+
+.figure{
+    border: 1px solid yellow;
+}
+
+.ThreeByThree{
+    display: grid;
+    grid-template-areas: "A1 A2 A3" 
+                         "B1 B2 B3" 
+                         "C1 C2 C3" ;
+}
