@@ -188,7 +188,78 @@ document.addEventListener('DOMContentLoaded', () => {
                                             retval.push("B2");
                                         }
                                       }
-                                      break;                   
+                                      break;  
+                                    case 8:
+                                    for(let i=0;i<decodeValue;i++){
+                                        if(0===i){
+                                            retval.push("A1");
+                                        }else if(1===i){
+                                            retval.push("A3");
+                                        }else if(2===i){
+                                            retval.push("B1");
+                                        }else if(3===i){
+                                            retval.push("B2");
+                                        }else if(4===i){
+                                            retval.push("B3");
+                                        }else if(5===i){
+                                            retval.push("C1");
+                                        }else if(6===i){
+                                            retval.push("C2");
+                                        }else if(7===i){
+                                            retval.push("C3");
+                                        }
+                                      }
+                                      break;     
+                                      case 9:
+                                        for(let i=0;i<decodeValue;i++){
+                                            if(0===i){
+                                                retval.push("A1");
+                                            }else if(1===i){
+                                                retval.push("A3");
+                                            }else if(2===i){
+                                                retval.push("B1");
+                                            }else if(3===i){
+                                                retval.push("B3");
+                                            }else if(4===i){
+                                                retval.push("C1");
+                                            }else if(5===i){
+                                                retval.push("C2");
+                                            }else if(6===i){
+                                                retval.push("C3");
+                                            }else if(7===i){
+                                                retval.push("D1");
+                                            }else if(8===i){
+                                                retval.push("D3");
+                                            }
+
+                                          }
+                                          break;    
+                                          case 10:
+                                            for(let i=0;i<decodeValue;i++){
+                                                if(0===i){
+                                                    retval.push("A1");
+                                                }else if(1===i){
+                                                    retval.push("A3");
+                                                }else if(2===i){
+                                                    retval.push("B1");
+                                                }else if(3===i){
+                                                    retval.push("B2");
+                                                }else if(4===i){
+                                                    retval.push("B3");
+                                                }else if(5===i){
+                                                    retval.push("C1");
+                                                }else if(6===i){
+                                                    retval.push("C3");
+                                                }else if(7===i){
+                                                    retval.push("D1");
+                                                }else if(8===i){
+                                                    retval.push("D2");
+                                                }else if(9===i){
+                                                    retval.push("D3");
+                                                }
+    
+                                              }
+                                              break;                              
               default:
                   break;
           }
@@ -230,19 +301,25 @@ document.addEventListener('DOMContentLoaded', () => {
         let lnumDecodeFigure = lCard.numDecodeFigureF();
         let ldecodeGridArea = lCard.decodeGridArea();
         let lnumDecodeFigureLenght = lnumDecodeFigure.length;
-        if(lnumDecodeFigureLenght>1&&lnumDecodeFigureLenght<=10){
+        if(lnumDecodeFigureLenght>=1&&lnumDecodeFigureLenght<=10){
             let lDiv2 = document.createElement("div");
             lDiv2.innerHTML = lnumDecodeFigure.length;
             if(!!lDiv){
                 lDiv.appendChild(lDiv2);
             }
-            if(lnumDecodeFigureLenght>1&&lnumDecodeFigureLenght<=7){
+            if(lnumDecodeFigureLenght>1&&lnumDecodeFigureLenght<=8){
                 lDiv.classList.add("ThreeByThree");
+            }
+            if(lnumDecodeFigureLenght>8&&lnumDecodeFigureLenght<=10){
+                lDiv.classList.add("ThreeByFour");
             }
         }
         for(let i=0;i<lnumDecodeFigure.length;i++){
             let lDiv2 = document.createElement("div");
             lDiv2.classList.add("figure");
+            if(1===lnumDecodeFigure.length){
+                lDiv2.classList.add("OnlyOne");   
+            }
             if(!!ldecodeGridArea[i]){
                 lDiv2.style.gridArea = ldecodeGridArea[i];
             }
