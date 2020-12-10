@@ -325,6 +325,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let strCardFigure = lCard.figure+"";
             strCardValue = String(strCardValue).toLowerCase();
             strCardFigure = String(strCardFigure).toLowerCase();
+            /** When deploy github add PokerGame**/
             lDiv2.style.backgroundImage ="url('/PokerGame/images/"+strCardValue+"-"+strCardFigure+".png')";
             lDiv2.style.backgroundRepeat ="no-repeat";
             lDiv2.style.backgroundSize ="100%";
