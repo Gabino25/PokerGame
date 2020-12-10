@@ -321,7 +321,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }else if(lnumDecodeFigureLenght>10&&lnumDecodeFigureLenght<=13){
             let lDiv2 = document.createElement("div");
-            lDiv2.style.backgroundImage ="url('/images/"+lCard.value+"-"+lCard.figure+".png')";
+            let strCardValue = lCard.value+"";
+            let strCardFigure = lCard.figure+"";
+            strCardValue = String(strCardValue).toLowerCase();
+            strCardFigure = String(strCardFigure).toLowerCase();
+            lDiv2.style.backgroundImage ="url('/images/"+strCardValue+"-"+strCardFigure+".png')";
             lDiv2.style.backgroundRepeat ="no-repeat";
             lDiv2.style.backgroundSize ="100%";
             lDiv2.style.height = "100%";
