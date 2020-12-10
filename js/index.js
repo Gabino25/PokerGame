@@ -5,7 +5,7 @@
  */
 document.addEventListener('DOMContentLoaded', () => {
     const CLUBS ="CLUBS";
-    const DIAMONDS = "DIAMONS";
+    const DIAMONDS = "DIAMONDS";
     const HEARTS ="HEARTS";
     const SPADES ="SPADES";
     const ACE ="ACE"; 
@@ -92,6 +92,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if(decodeValue>=2&&decodeValue<=10){
           for(let i=0;i<decodeValue;i++){
             retval.push(decodeFigure);
+          }
+        }else if(decodeValue>=11&&decodeValue<=13){
+            for(let i=0;i<decodeValue;i++){
+             retval.push("NA");
           }
         }
         if(decodeValue===14){
@@ -280,8 +284,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let deck = [];
 
-    for(let i=0;i<cardValues.length;i++){
+    
       for(let j=0;j<cardFigures.length;j++){
+        for(let i=0;i<cardValues.length;i++){
           let lCard;  
           if(cardFigures[j]===CLUBS||cardFigures[j]===SPADES){
             lCard = new Card(cardValues[i],cardFigures[j],"black");
@@ -289,8 +294,9 @@ document.addEventListener('DOMContentLoaded', () => {
             lCard = new Card(cardValues[i],cardFigures[j],"red"); 
           }
           deck.push(lCard);
+        }
       }
-    }
+    
 
     for(let i=0;i<deck.length;i++){
         let lDiv = document.createElement("div");
@@ -313,8 +319,17 @@ document.addEventListener('DOMContentLoaded', () => {
             if(lnumDecodeFigureLenght>8&&lnumDecodeFigureLenght<=10){
                 lDiv.classList.add("ThreeByFour");
             }
+        }else if(lnumDecodeFigureLenght>10&&lnumDecodeFigureLenght<=13){
+            let lDiv2 = document.createElement("div");
+            lDiv2.style.backgroundImage ="url('/images/"+lCard.value+"-"+lCard.figure+".png')";
+            lDiv2.style.backgroundRepeat ="no-repeat";
+            lDiv2.style.backgroundSize ="100%";
+            lDiv2.style.height = "100%";
+            if(!!lDiv){
+                lDiv.appendChild(lDiv2);
+            }
         }
-        for(let i=0;i<lnumDecodeFigure.length;i++){
+        for(let i=0;i<lnumDecodeFigure.length&&(lnumDecodeFigure.length>=1&&lnumDecodeFigure.length<=10);i++){
             let lDiv2 = document.createElement("div");
             lDiv2.classList.add("figure");
             if(1===lnumDecodeFigure.length){

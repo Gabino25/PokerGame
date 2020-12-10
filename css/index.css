@@ -1,7 +1,12 @@
 @charset "UTF-8";
+
+*{
+  font-size: 2vw;
+}
+
 .pokerGame{
     display: grid;
-    grid-template-columns: repeat(13,6%);
+    grid-template-columns: repeat(13,7vw);
     grid-template-rows: 4;
     column-gap: 1px;
     row-gap: 2px;
@@ -10,8 +15,9 @@
 
 .card{
     border: 1px solid blue;
-    /*width:  3.75em;
-    height: 5.00em;*/
+    height:21vh;
+    /*width: 100px;
+    */
 }
 
 .figure{
@@ -37,4 +43,53 @@
   font-size: 300%;
   margin: auto;
   text-align: center;
+}
+
+@media (max-width: 600px) {
+
+    *{
+     font-size: 3vw;
+    }
+
+    .pokerGame{
+        display: grid;
+        grid-template-columns: repeat(7,12vw);
+        grid-template-rows: 4;
+        column-gap: 1px;
+        row-gap: 2px;
+        border: 1px solid red;
+    }
+    
+    .card{
+        border: 1px solid blue;
+        height:15vh;
+        /*width: 100px;
+        */
+    }
+    
+    .figure{
+        border: 1px solid yellow;
+    }
+    
+    .ThreeByThree{
+        display: grid;
+        grid-template-areas: "A1 A2 A3" 
+                             "B1 B2 B3" 
+                             "C1 C2 C3" ;
+    }
+    
+    .ThreeByFour{
+        display: grid;
+        grid-template-areas: "A1 A2 A3" 
+                             "B1 B2 B3" 
+                             "C1 C2 C3"
+                             "D1 D2 D3" ;
+    }
+    
+    .OnlyOne{
+      font-size: 300%;
+      margin: auto;
+      text-align: center;
+    }
+
 }
